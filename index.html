@@ -6,7 +6,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>藤永の家計簿アプリ</title>
+  <title>家計簿アプリ</title>
+
+  <link rel="icon" type="image/png" href="./assets/images/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon.png">
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@2.0.2/destyle.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -17,14 +21,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="./assets/scripts/libraries/official_easypiechart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/easypiechart.min.js"></script>
   <script src="./assets/scripts/index.js" defer type="module"></script>
 </head>
 
 <body class="font-cute">
   <nav>
-    <div class="nav-wrapper animate__animated animate__rubberBand">
-      <a href="#" class="brand-logo">家計簿</a>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">家計簿</a>
     </div>
   </nav>
 
@@ -87,8 +91,8 @@
 
       <div class="center-align">
         <ul class="tabs">
-          <li class="tab col s3"><a href="#report__day__today">今日</a></li>
-          <li class="tab col s3"><a href="#report__day__yesterday">昨日</a></li>
+          <li class="tab col s6"><a href="#report__day__today">今日</a></li>
+          <li class="tab col s6"><a href="#report__day__yesterday">昨日</a></li>
         </ul>
       </div>
 
@@ -124,13 +128,22 @@
             </table>
           </div>
         </div>
+        <!-- <div class="card modal-trigger" href="#modal__chart-limit-progress">
+          <div class="card-content">
+            <span class="card-title">今月の支出目標</span>
+            <div class="chart center-align relative" data-percent="79" id="report__day__today__chart-limit-progress">
+              <p class="font-bold" id="report__day__today__chart-limit-progress__p-percentage">120%</p>
+              <span class="span--sub"><span id="report__day__today__chart-limit-progress__span-spent-so-far">12000</span> / <span id="report__day__today__chart-limit-progress__span-limit">50000</span>
+            </div>
+          </div>
+        </div> -->
       </div>
 
       <div id="report__day__yesterday" class="display-none">
         <div class="card">
           <div class="card-content">
-            <h5 class="center-align">収入 ￥<span id="report__day__yesterday__span-out">0</span></h5>
-            <h5 class="center-align">支出 ￥<span id="report__day__yesterday__span-in">0</span></h5>
+            <h5 class="center-align">支出 ￥<span id="report__day__yesterday__span-out">0</span></h5>
+            <h5 class="center-align">収入 ￥<span id="report__day__yesterday__span-in">0</span></h5>
           </div>
         </div>
         <div class="card">
@@ -170,7 +183,6 @@
           <a class="waves-effect waves-light btn modal-trigger amber" href="#modal__modify-record">データを修正</a>
         </div>
       </div>
-
     </div>
 
     <!-- ここから上、１日のレポート -->
@@ -180,8 +192,8 @@
     <div id="report__week" class="col s12 teal lighten-3">
       <div class="center-align">
         <ul class="tabs">
-          <li class="tab col s3"><a href="#report__week__this-week" class="active">今週</a></li>
-          <li class="tab col s3"><a href="#report__week__last-week">先週</a></li>
+          <li class="tab col s6"><a href="#report__week__this-week" class="active">今週</a></li>
+          <li class="tab col s6"><a href="#report__week__last-week">先週</a></li>
         </ul>
       </div>
       <div id="report__week__this-week">
@@ -466,11 +478,7 @@
   <footer class="page-footer">
     <div class="container">
       <h5 class="white-text">About</h5>
-      <ul>
-        <li><a href="./documentation/index.html" class="blue-grey-text text-lighten-4">このアプリの説明書</a></li>
-        <li><a href="https://materializecss.com/" class="blue-grey-text text-lighten-4">デザインのフレームワーク</a></li>
-        <li><a href="https://www.chartjs.org/" class="blue-grey-text text-lighten-4">チャートのライブラリ</a></li>
-      </ul>
+      <p>オリジナル家計簿アプリ</p>
     </div>
     <div class="footer-copyright">
       <div class="container white-text">
@@ -638,6 +646,19 @@
     </div>
   </div>
 
+  <div class="modal" id="modal__chart-limit-progress">
+    <div class="modal-content">
+      <h5>目標額を設定</h5>
+      <div class="input-field">
+        <input id="modal__chart-limit-progress__limit" class="validate" type="number" pattern="\d*">
+        <label for="modal__chart-limit-progress__limit">今月の目標支出額</label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">取り消し</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn" id="modal__chart-limit-progress__button-decide">決定</a>
+    </div>
+  </div>
   <!-- Modals -->
 
 
